@@ -191,6 +191,68 @@ public static void countingSort(int[] arr, int maxVal) {
 }
 ```
 
+## 7. Radix Sort
+
+```mermaid
+flowchart TD
+    A["Input: [170, 45, 75, 90, 802, 24, 2, 66]"] --> B["Sort by 1s digit"]
+    B --> C["[170, 90, 802, 2, 24, 45, 75, 66]"]
+    C --> D["Sort by 10s digit"]
+    D --> E["[802, 2, 24, 45, 66, 170, 75, 90]"]
+    E --> F["Sort by 100s digit"]
+    F --> G["[2, 24, 45, 66, 75, 90, 170, 802]"]
+```
+
+**Example (Dry Run):** `[170, 45, 75, 90, 802, 24, 2, 66]`
+- **1s Place (Units):** `170, 90, 802, 2, 24, 45, 75, 66` (Sorted by last digit)
+- **10s Place (Tens):** `802, 2, 24, 45, 66, 170, 75, 90` (Sorted by tens digit)
+- **100s Place (Hundreds):** `2, 24, 45, 66, 75, 90, 170, 802` (Sorted by hundreds)
+- Result is fully sorted!
+
+```java
+// Digit by digit sort karta hai (using stable sort like Counting Sort)
+// Time: O(d * (n + k)), Space: O(n + k), Stable: Yes (d = max digits)
+
+public static void radixSort(int[] arr) {
+    if (arr.length == 0) return;
+    int max = arr[0];
+    for (int num : arr) {
+        if (num > max) max = num;              // max number dhundho
+    }
+    
+    // Har digit ke liye counting sort (exp = 1, 10, 100...)
+    for (int exp = 1; max / exp > 0; exp *= 10) {
+        countSortForRadix(arr, exp);
+    }
+}
+
+private static void countSortForRadix(int[] arr, int exp) {
+    int n = arr.length;
+    int[] output = new int[n];
+    int[] count = new int[10];                 // base 10 (0-9 digits)
+    
+    // Frequencies of current digit
+    for (int i = 0; i < n; i++) {
+        count[(arr[i] / exp) % 10]++;
+    }
+    
+    // Prefix sum for positions
+    for (int i = 1; i < 10; i++) {
+        count[i] += count[i - 1];
+    }
+    
+    // Build output array (Right to Left loop so it remains STABLE)
+    for (int i = n - 1; i >= 0; i--) {
+        int digit = (arr[i] / exp) % 10;
+        output[count[digit] - 1] = arr[i];
+        count[digit]--;
+    }
+    
+    // Copy back to original array
+    System.arraycopy(output, 0, arr, 0, n);
+}
+```
+
 ## 📊 Comparison Table
 
 | Algorithm | Best     | Average  | Worst    | Space   | Stable |
@@ -201,6 +263,7 @@ public static void countingSort(int[] arr, int maxVal) {
 | **Merge** | O(nlogn) | O(nlogn) | O(nlogn) | O(n)    | ✅     |
 | **Quick** | O(nlogn) | O(nlogn) | O(n²)    | O(logn) | ❌     |
 | Counting  | O(n+k)   | O(n+k)   | O(n+k)   | O(k)    | ✅     |
+| Radix     | O(d*(n+k))| O(d*(n+k))| O(d*(n+k))| O(n+k)  | ✅     |
 
 ## Java Built-in Sort
 
