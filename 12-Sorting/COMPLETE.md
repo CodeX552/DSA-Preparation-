@@ -2,25 +2,7 @@
 
 ## 1. Bubble Sort
 
-```mermaid
-flowchart TD
-    Start(["Start"]) --> InitI["i = 0"]
-    InitI --> CondI{"i < n-1?"}
-    CondI -- Yes --> SetSwap["swapped = false"]
-    SetSwap --> InitJ["j = 0"]
-    InitJ --> CondJ{"j < n - 1 - i?"}
-    CondJ -- Yes --> Compare{"arr[j] > arr[j+1]?"}
-    Compare -- Yes --> Swap["Swap elements"]
-    Swap --> SetSwapTrue["swapped = true"]
-    SetSwapTrue --> IncJ["j++"]
-    Compare -- No --> IncJ
-    IncJ --> CondJ
-    CondJ -- No --> CheckSwap{"swapped?"}
-    CheckSwap -- Yes --> IncI["i++"]
-    CheckSwap -- No --> End(["Sorted / End"])
-    IncI --> CondI
-    CondI -- No --> End
-```
+![Bubble Sort Animation](https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif)
 
 **Example (Dry Run):** `[5, 3, 8, 4, 2]`
 - Pass 1: `[3, 5, 8, 4, 2]` ➔ `[3, 5, 4, 8, 2]` ➔ `[3, 5, 4, 2, 8]` (8 is fixed)
@@ -49,23 +31,7 @@ public static void bubbleSort(int[] arr) {
 
 ## 2. Selection Sort
 
-```mermaid
-flowchart TD
-    Start(["Start"]) --> InitI["i = 0"]
-    InitI --> CondI{"i < n-1?"}
-    CondI -- Yes --> MinIdx["minIdx = i"]
-    MinIdx --> InitJ["j = i + 1"]
-    InitJ --> CondJ{"j < n?"}
-    CondJ -- Yes --> Compare{"arr[j] < arr[minIdx]?"}
-    Compare -- Yes --> UpdateMin["minIdx = j"]
-    Compare -- No --> IncJ["j++"]
-    UpdateMin --> IncJ
-    IncJ --> CondJ
-    CondJ -- No --> Swap["Swap arr[i] and arr[minIdx]"]
-    Swap --> IncI["i++"]
-    IncI --> CondI
-    CondI -- No --> End(["Sorted / End"])
-```
+![Selection Sort Animation](https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif)
 
 **Example (Dry Run):** `[29, 10, 14, 37, 13]`
 - Pass 1: Find min `10`, swap with `29` ➔ `[10, 29, 14, 37, 13]`
@@ -91,21 +57,7 @@ public static void selectionSort(int[] arr) {
 
 ## 3. Insertion Sort
 
-```mermaid
-flowchart TD
-    Start(["Start"]) --> InitI["i = 1"]
-    InitI --> CondI{"i < n?"}
-    CondI -- Yes --> Key["key = arr[i]"]
-    Key --> InitJ["j = i - 1"]
-    InitJ --> CondJ{"j >= 0 && arr[j] > key?"}
-    CondJ -- Yes --> Shift["arr[j+1] = arr[j]"]
-    Shift --> DecJ["j--"]
-    DecJ --> CondJ
-    CondJ -- No --> Insert["arr[j+1] = key"]
-    Insert --> IncI["i++"]
-    IncI --> CondI
-    CondI -- No --> End(["Sorted / End"])
-```
+![Insertion Sort Animation](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif)
 
 **Example (Dry Run):** `[4, 3, 2, 10]`
 - `i=1` (key=3): Shift 4 right, insert 3 ➔ `[3, 4, 2, 10]`
@@ -131,34 +83,7 @@ public static void insertionSort(int[] arr) {
 
 ## 4. Merge Sort ⭐ (MUST KNOW!)
 
-```mermaid
-graph TD
-    A("[38, 27, 43, 3, 9, 82, 10]") -->|Divide| B("[38, 27, 43]")
-    A -->|Divide| C("[3, 9, 82, 10]")
-    B --> D("[38]")
-    B --> E("[27, 43]")
-    C --> F("[3, 9]")
-    C --> G("[82, 10]")
-    E --> H("[27]")
-    E --> I("[43]")
-    F --> J("[3]")
-    F --> K("[9]")
-    G --> L("[82]")
-    G --> M("[10]")
-
-    H -.->|Merge| N("[27, 43]")
-    I -.->|Merge| N
-    D -.->|Merge| O("[27, 38, 43]")
-    N -.->|Merge| O
-    J -.->|Merge| P("[3, 9]")
-    K -.->|Merge| P
-    L -.->|Merge| Q("[10, 82]")
-    M -.->|Merge| Q
-    P -.->|Merge| R("[3, 9, 10, 82]")
-    Q -.->|Merge| R
-    O -.->|Merge| S("[3, 9, 10, 27, 38, 43, 82]")
-    R -.->|Merge| S
-```
+![Merge Sort Animation](https://upload.wikimedia.org/wikipedia/commons/c/cc/Merge-sort-example-300px.gif)
 
 **Example (Dry Run):** `[38, 27, 43, 3, 9, 82, 10]`
 - **Divide:** Break into smaller arrays. `[38]`, `[27]`, `[43]`, `[3]`, `[9]`, `[82]`, `[10]`.
@@ -197,18 +122,7 @@ private static void merge(int[] arr, int left, int mid, int right) {
 
 ## 5. Quick Sort ⭐ (MUST KNOW!)
 
-```mermaid
-graph TD
-    A["[10, 80, 30, 90, 40, 50, 70] <br> Pivot: 70"] -->|Partition| B["[10, 30, 40, 50]"]
-    A -->|Pivot Placed| C("[70]")
-    A -->|Partition| D["[80, 90]"]
-
-    B --> E["[10, 30, 40]"]
-    B --> F("[50]")
-
-    D --> G["[80]"]
-    D --> H("[90]")
-```
+![Quick Sort Animation](https://upload.wikimedia.org/wikipedia/commons/9/9c/Quicksort-example.gif)
 
 **Example (Dry Run):** `[10, 80, 30, 90, 40, 50, 70]`
 - **Pivot:** `70`. Compare elements with `70` and move smaller to the left.
