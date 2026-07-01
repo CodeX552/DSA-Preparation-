@@ -70,15 +70,25 @@ public static void selectionSort(int[] arr) {
 
 public static void insertionSort(int[] arr) {
     for (int i = 1; i < arr.length; i++) {
-        int key = arr[i];                      // current element
-        int j = i - 1;
-        while (j >= 0 && arr[j] > key) {       // shift karo right
-            arr[j + 1] = arr[j];
+        int j = i;
+
+        while (j > 0 && arr[j] < arr[j - 1]) {
+            // swap
+            int temp = arr[j];
+            arr[j] = arr[j - 1];
+            arr[j - 1] = temp;
+
             j--;
         }
-        arr[j + 1] = key;                     // sahi jagah insert karo
     }
 }
+```
+
+**Explanation of the Swapping Code:**
+- **`i = 1` se start:** Hum assume karte hain ki index `0` wala pehla element already apni jagah par hai.
+- **`while` loop:** Hum `j` ko piche le jaate hain (`j--`) jab tak current element `arr[j]`, uske pichle element `arr[j - 1]` se chhota hai.
+- **Swap mechanism:** Agar current element chhota hai, toh usko uske left wale element se **swap** kar dete hain. Ye cycle chalta rehta hai jab tak element apni sahi jagah nahi pahunch jata.
+- *(Note: Purana approach shifting ka tha jo slightly better performance deta hai kyuki swaps mein 3 assignments hote hain, par ye adjacent swap wala approach easily samajh mein aa jata hai aur card sorting ki feel deta hai.)*
 ```
 
 ## 4. Merge Sort ⭐ (MUST KNOW!)
