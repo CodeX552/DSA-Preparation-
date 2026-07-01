@@ -22,6 +22,12 @@ flowchart TD
     CondI -- No --> End
 ```
 
+**Example (Dry Run):** `[5, 3, 8, 4, 2]`
+- Pass 1: `[3, 5, 8, 4, 2]` ➔ `[3, 5, 4, 8, 2]` ➔ `[3, 5, 4, 2, 8]` (8 is fixed)
+- Pass 2: `[3, 4, 5, 2, 8]` ➔ `[3, 4, 2, 5, 8]` (5 is fixed)
+- Pass 3: `[3, 2, 4, 5, 8]` (4 is fixed)
+- Pass 4: `[2, 3, 4, 5, 8]` (Sorted!)
+
 ```java
 // Sabse simple — adjacent elements swap karo agar wrong order mein hain
 // Time: O(n²), Space: O(1), Stable: Yes
@@ -61,6 +67,12 @@ flowchart TD
     CondI -- No --> End(["Sorted / End"])
 ```
 
+**Example (Dry Run):** `[29, 10, 14, 37, 13]`
+- Pass 1: Find min `10`, swap with `29` ➔ `[10, 29, 14, 37, 13]`
+- Pass 2: Find min `13`, swap with `29` ➔ `[10, 13, 14, 37, 29]`
+- Pass 3: Find min `14`, swap with `14` ➔ `[10, 13, 14, 37, 29]`
+- Pass 4: Find min `29`, swap with `37` ➔ `[10, 13, 14, 29, 37]` (Sorted!)
+
 ```java
 // Minimum dhundho, front mein daalo
 // Time: O(n²), Space: O(1), Stable: No
@@ -94,6 +106,11 @@ flowchart TD
     IncI --> CondI
     CondI -- No --> End(["Sorted / End"])
 ```
+
+**Example (Dry Run):** `[4, 3, 2, 10]`
+- `i=1` (key=3): Shift 4 right, insert 3 ➔ `[3, 4, 2, 10]`
+- `i=2` (key=2): Shift 4, 3 right, insert 2 ➔ `[2, 3, 4, 10]`
+- `i=3` (key=10): 10 is > 4, no shift ➔ `[2, 3, 4, 10]` (Sorted!)
 
 ```java
 // Card sorting jaisa — sahi jagah insert karo
@@ -143,6 +160,13 @@ graph TD
     R -.->|Merge| S
 ```
 
+**Example (Dry Run):** `[38, 27, 43, 3, 9, 82, 10]`
+- **Divide:** Break into smaller arrays. `[38]`, `[27]`, `[43]`, `[3]`, `[9]`, `[82]`, `[10]`.
+- **Merge:** Combine sorted arrays.
+  - `[27, 38]` and `[43]` ➔ `[27, 38, 43]`
+  - `[3, 9]` and `[10, 82]` ➔ `[3, 9, 10, 82]`
+  - Finally merge both ➔ `[3, 9, 10, 27, 38, 43, 82]`
+
 ```java
 // Divide and Conquer — split karo, sort karo, merge karo
 // Time: O(n log n), Space: O(n), Stable: Yes
@@ -186,6 +210,11 @@ graph TD
     D --> H("[90]")
 ```
 
+**Example (Dry Run):** `[10, 80, 30, 90, 40, 50, 70]`
+- **Pivot:** `70`. Compare elements with `70` and move smaller to the left.
+- **Partition:** `[10, 30, 40, 50, 70, 90, 80]` (Pivot `70` is now at its correct sorted position).
+- Recursively apply Quick Sort on left `[10, 30, 40, 50]` and right `[90, 80]`.
+
 ```java
 // Partition based — pivot choose karo, chhote left, bade right
 // Time: O(n log n) avg, O(n²) worst, Space: O(log n), Stable: No
@@ -223,6 +252,12 @@ flowchart LR
     C --> D["Reconstruct Array"]
     D --> E["Output: 1, 2, 2, 3, 3, 4, 8"]
 ```
+
+**Example (Dry Run):** `[4, 2, 2, 8, 3, 3, 1]` (max = 8)
+- **Count Array:** Create array of size 9 (0 to 8). Count frequencies:
+  `count[1]=1, count[2]=2, count[3]=2, count[4]=1, count[8]=1`
+- **Reconstruct:** Iterate over count array and overwrite original array:
+  Output: `[1, 2, 2, 3, 3, 4, 8]`
 
 ```java
 // Range known ho toh O(n + k) mein sort
