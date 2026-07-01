@@ -1,6 +1,25 @@
 # 📊 Sorting — Complete Learning Guide
 
 ## 1. Bubble Sort
+```mermaid
+flowchart TD
+    Start([Start]) --> InitI[i = 0]
+    InitI --> CondI{i < n-1?}
+    CondI -- Yes --> SetSwap[swapped = false]
+    SetSwap --> InitJ[j = 0]
+    InitJ --> CondJ{j < n - 1 - i?}
+    CondJ -- Yes --> Compare{arr[j] > arr[j+1]?}
+    Compare -- Yes --> Swap[Swap elements]
+    Swap --> SetSwapTrue[swapped = true]
+    SetSwapTrue --> IncJ[j++]
+    Compare -- No --> IncJ
+    IncJ --> CondJ
+    CondJ -- No --> CheckSwap{swapped?}
+    CheckSwap -- Yes --> IncI[i++]
+    CheckSwap -- No --> End([Sorted / End])
+    IncI --> CondI
+    CondI -- No --> End
+```
 ```java
 // Sabse simple — adjacent elements swap karo agar wrong order mein hain
 // Time: O(n²), Space: O(1), Stable: Yes
@@ -21,6 +40,23 @@ public static void bubbleSort(int[] arr) {
 ```
 
 ## 2. Selection Sort
+```mermaid
+flowchart TD
+    Start([Start]) --> InitI[i = 0]
+    InitI --> CondI{i < n-1?}
+    CondI -- Yes --> MinIdx[minIdx = i]
+    MinIdx --> InitJ[j = i + 1]
+    InitJ --> CondJ{j < n?}
+    CondJ -- Yes --> Compare{arr[j] < arr[minIdx]?}
+    Compare -- Yes --> UpdateMin[minIdx = j]
+    Compare -- No --> IncJ[j++]
+    UpdateMin --> IncJ
+    IncJ --> CondJ
+    CondJ -- No --> Swap[Swap arr[i] and arr[minIdx]]
+    Swap --> IncI[i++]
+    IncI --> CondI
+    CondI -- No --> End([Sorted / End])
+```
 ```java
 // Minimum dhundho, front mein daalo
 // Time: O(n²), Space: O(1), Stable: No
@@ -38,6 +74,21 @@ public static void selectionSort(int[] arr) {
 ```
 
 ## 3. Insertion Sort
+```mermaid
+flowchart TD
+    Start([Start]) --> InitI[i = 1]
+    InitI --> CondI{i < n?}
+    CondI -- Yes --> Key[key = arr[i]]
+    Key --> InitJ[j = i - 1]
+    InitJ --> CondJ{"j >= 0 && arr[j] > key?"}
+    CondJ -- Yes --> Shift[arr[j+1] = arr[j]]
+    Shift --> DecJ[j--]
+    DecJ --> CondJ
+    CondJ -- No --> Insert[arr[j+1] = key]
+    Insert --> IncI[i++]
+    IncI --> CondI
+    CondI -- No --> End([Sorted / End])
+```
 ```java
 // Card sorting jaisa — sahi jagah insert karo
 // Time: O(n²), Space: O(1), Stable: Yes, Best for small/nearly sorted
@@ -56,6 +107,34 @@ public static void insertionSort(int[] arr) {
 ```
 
 ## 4. Merge Sort ⭐ (MUST KNOW!)
+```mermaid
+graph TD
+    A("[38, 27, 43, 3, 9, 82, 10]") -->|Divide| B("[38, 27, 43]")
+    A -->|Divide| C("[3, 9, 82, 10]")
+    B --> D("[38]")
+    B --> E("[27, 43]")
+    C --> F("[3, 9]")
+    C --> G("[82, 10]")
+    E --> H("[27]")
+    E --> I("[43]")
+    F --> J("[3]")
+    F --> K("[9]")
+    G --> L("[82]")
+    G --> M("[10]")
+    
+    H -.->|Merge| N("[27, 43]")
+    I -.->|Merge| N
+    D -.->|Merge| O("[27, 38, 43]")
+    N -.->|Merge| O
+    J -.->|Merge| P("[3, 9]")
+    K -.->|Merge| P
+    L -.->|Merge| Q("[10, 82]")
+    M -.->|Merge| Q
+    P -.->|Merge| R("[3, 9, 10, 82]")
+    Q -.->|Merge| R
+    O -.->|Merge| S("[3, 9, 10, 27, 38, 43, 82]")
+    R -.->|Merge| S
+```
 ```java
 // Divide and Conquer — split karo, sort karo, merge karo
 // Time: O(n log n), Space: O(n), Stable: Yes
@@ -85,6 +164,18 @@ private static void merge(int[] arr, int left, int mid, int right) {
 ```
 
 ## 5. Quick Sort ⭐ (MUST KNOW!)
+```mermaid
+graph TD
+    A["[10, 80, 30, 90, 40, 50, 70] <br> Pivot: 70"] -->|Partition| B["[10, 30, 40, 50]"]
+    A -->|Pivot Placed| C("[70]")
+    A -->|Partition| D["[80, 90]"]
+    
+    B --> E["[10, 30, 40]"]
+    B --> F("[50]")
+    
+    D --> G["[80]"]
+    D --> H("[90]")
+```
 ```java
 // Partition based — pivot choose karo, chhote left, bade right
 // Time: O(n log n) avg, O(n²) worst, Space: O(log n), Stable: No
@@ -114,6 +205,13 @@ private static int partition(int[] arr, int low, int high) {
 ```
 
 ## 6. Counting Sort
+```mermaid
+flowchart LR
+    A[Input: 4, 2, 2, 8, 3, 3, 1] --> B[Count Frequencies]
+    B --> C["Count Array: <br> 1: 1 <br> 2: 2 <br> 3: 2 <br> 4: 1 <br> ... <br> 8: 1"]
+    C --> D[Reconstruct Array]
+    D --> E[Output: 1, 2, 2, 3, 3, 4, 8]
+```
 ```java
 // Range known ho toh O(n + k) mein sort
 // Time: O(n + k), Space: O(k), Stable: Yes
