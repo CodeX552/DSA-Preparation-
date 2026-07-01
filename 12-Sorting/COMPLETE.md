@@ -5,6 +5,7 @@
 ![Bubble Sort Animation](https://upload.wikimedia.org/wikipedia/commons/c/c8/Bubble-sort-example-300px.gif)
 
 **Example (Dry Run):** `[5, 3, 8, 4, 2]`
+
 - Pass 1: `[3, 5, 8, 4, 2]` ➔ `[3, 5, 4, 8, 2]` ➔ `[3, 5, 4, 2, 8]` (8 is fixed)
 - Pass 2: `[3, 4, 5, 2, 8]` ➔ `[3, 4, 2, 5, 8]` (5 is fixed)
 - Pass 3: `[3, 2, 4, 5, 8]` (4 is fixed)
@@ -34,6 +35,7 @@ public static void bubbleSort(int[] arr) {
 ![Selection Sort Animation](https://upload.wikimedia.org/wikipedia/commons/9/94/Selection-Sort-Animation.gif)
 
 **Example (Dry Run):** `[29, 10, 14, 37, 13]`
+
 - Pass 1: Find min `10`, swap with `29` ➔ `[10, 29, 14, 37, 13]`
 - Pass 2: Find min `13`, swap with `29` ➔ `[10, 13, 14, 37, 29]`
 - Pass 3: Find min `14`, swap with `14` ➔ `[10, 13, 14, 37, 29]`
@@ -60,6 +62,7 @@ public static void selectionSort(int[] arr) {
 ![Insertion Sort Animation](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif)
 
 **Example (Dry Run):** `[4, 3, 2, 10]`
+
 - `i=1` (key=3): Shift 4 right, insert 3 ➔ `[3, 4, 2, 10]`
 - `i=2` (key=2): Shift 4, 3 right, insert 2 ➔ `[2, 3, 4, 10]`
 - `i=3` (key=10): 10 is > 4, no shift ➔ `[2, 3, 4, 10]` (Sorted!)
@@ -85,11 +88,13 @@ public static void insertionSort(int[] arr) {
 ```
 
 **Explanation of the Swapping Code:**
+
 - **`i = 1` se start:** Hum assume karte hain ki index `0` wala pehla element already apni jagah par hai.
 - **`while` loop:** Hum `j` ko piche le jaate hain (`j--`) jab tak current element `arr[j]`, uske pichle element `arr[j - 1]` se chhota hai.
 - **Swap mechanism:** Agar current element chhota hai, toh usko uske left wale element se **swap** kar dete hain. Ye cycle chalta rehta hai jab tak element apni sahi jagah nahi pahunch jata.
-- *(Note: Purana approach shifting ka tha jo slightly better performance deta hai kyuki swaps mein 3 assignments hote hain, par ye adjacent swap wala approach easily samajh mein aa jata hai aur card sorting ki feel deta hai.)*
-```
+- _(Note: Purana approach shifting ka tha jo slightly better performance deta hai kyuki swaps mein 3 assignments hote hain, par ye adjacent swap wala approach easily samajh mein aa jata hai aur card sorting ki feel deta hai.)_
+
+``
 
 ## 4. Merge Sort ⭐ (MUST KNOW!)
 
@@ -128,13 +133,14 @@ private static void merge(int[] arr, int left, int mid, int right) {
 
     System.arraycopy(temp, 0, arr, left, temp.length); // copy back
 }
-```
+````
 
 ## 5. Quick Sort ⭐ (MUST KNOW!)
 
 ![Quick Sort Animation](https://upload.wikimedia.org/wikipedia/commons/9/9c/Quicksort-example.gif)
 
 **Example (Dry Run):** `[10, 80, 30, 90, 40, 50, 70]`
+
 - **Pivot:** `70`. Compare elements with `70` and move smaller to the left.
 - **Partition:** `[10, 30, 40, 50, 70, 90, 80]` (Pivot `70` is now at its correct sorted position).
 - Recursively apply Quick Sort on left `[10, 30, 40, 50]` and right `[90, 80]`.
@@ -178,6 +184,7 @@ flowchart LR
 ```
 
 **Example (Dry Run):** `[4, 2, 2, 8, 3, 3, 1]` (max = 8)
+
 - **Count Array:** Create array of size 9 (0 to 8). Count frequencies:
   `count[1]=1, count[2]=2, count[3]=2, count[4]=1, count[8]=1`
 - **Reconstruct:** Iterate over count array and overwrite original array:
@@ -214,6 +221,7 @@ flowchart TD
 ```
 
 **Example (Dry Run):** `[170, 45, 75, 90, 802, 24, 2, 66]`
+
 - **1s Place (Units):** `170, 90, 802, 2, 24, 45, 75, 66` (Sorted by last digit)
 - **10s Place (Tens):** `802, 2, 24, 45, 66, 170, 75, 90` (Sorted by tens digit)
 - **100s Place (Hundreds):** `2, 24, 45, 66, 75, 90, 170, 802` (Sorted by hundreds)
@@ -229,7 +237,7 @@ public static void radixSort(int[] arr) {
     for (int num : arr) {
         if (num > max) max = num;              // max number dhundho
     }
-    
+
     // Har digit ke liye counting sort (exp = 1, 10, 100...)
     for (int exp = 1; max / exp > 0; exp *= 10) {
         countSortForRadix(arr, exp);
@@ -240,24 +248,24 @@ private static void countSortForRadix(int[] arr, int exp) {
     int n = arr.length;
     int[] output = new int[n];
     int[] count = new int[10];                 // base 10 (0-9 digits)
-    
+
     // Frequencies of current digit
     for (int i = 0; i < n; i++) {
         count[(arr[i] / exp) % 10]++;
     }
-    
+
     // Prefix sum for positions
     for (int i = 1; i < 10; i++) {
         count[i] += count[i - 1];
     }
-    
+
     // Build output array (Right to Left loop so it remains STABLE)
     for (int i = n - 1; i >= 0; i--) {
         int digit = (arr[i] / exp) % 10;
         output[count[digit] - 1] = arr[i];
         count[digit]--;
     }
-    
+
     // Copy back to original array
     System.arraycopy(output, 0, arr, 0, n);
 }
@@ -265,15 +273,15 @@ private static void countSortForRadix(int[] arr, int exp) {
 
 ## 📊 Comparison Table
 
-| Algorithm | Best     | Average  | Worst    | Space   | Stable |
-| --------- | -------- | -------- | -------- | ------- | ------ |
-| Bubble    | O(n)     | O(n²)    | O(n²)    | O(1)    | ✅     |
-| Selection | O(n²)    | O(n²)    | O(n²)    | O(1)    | ❌     |
-| Insertion | O(n)     | O(n²)    | O(n²)    | O(1)    | ✅     |
-| **Merge** | O(nlogn) | O(nlogn) | O(nlogn) | O(n)    | ✅     |
-| **Quick** | O(nlogn) | O(nlogn) | O(n²)    | O(logn) | ❌     |
-| Counting  | O(n+k)   | O(n+k)   | O(n+k)   | O(k)    | ✅     |
-| Radix     | O(d*(n+k))| O(d*(n+k))| O(d*(n+k))| O(n+k)  | ✅     |
+| Algorithm | Best        | Average     | Worst       | Space   | Stable |
+| --------- | ----------- | ----------- | ----------- | ------- | ------ |
+| Bubble    | O(n)        | O(n²)       | O(n²)       | O(1)    | ✅     |
+| Selection | O(n²)       | O(n²)       | O(n²)       | O(1)    | ❌     |
+| Insertion | O(n)        | O(n²)       | O(n²)       | O(1)    | ✅     |
+| **Merge** | O(nlogn)    | O(nlogn)    | O(nlogn)    | O(n)    | ✅     |
+| **Quick** | O(nlogn)    | O(nlogn)    | O(n²)       | O(logn) | ❌     |
+| Counting  | O(n+k)      | O(n+k)      | O(n+k)      | O(k)    | ✅     |
+| Radix     | O(d\*(n+k)) | O(d\*(n+k)) | O(d\*(n+k)) | O(n+k)  | ✅     |
 
 ## Java Built-in Sort
 
