@@ -167,7 +167,16 @@ private static int partition(int[] arr, int low, int high) {
             int temp = arr[i]; arr[i] = arr[j]; arr[j] = temp; // swap
         }
     }
+    /*i aur j ka easy trick
 
+Socho array ko 3 parts me divide kiya gaya hai:
+
+| छोटे elements | बड़े elements | अभी check नहीं किए |
+0              i              j                 high
+j har element ko check karta hai.
+i sirf tab aage badhta hai jab chhota element milta hai.
+Loop ke end me i + 1 wahi position hoti hai jahan pivot ko rakhna chahiye.
+*/
     int temp = arr[i + 1]; arr[i + 1] = arr[high]; arr[high] = temp; // pivot sahi jagah
     return i + 1;                              // pivot ka final index
 }
