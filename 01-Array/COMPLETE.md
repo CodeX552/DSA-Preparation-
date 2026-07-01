@@ -17,6 +17,11 @@
 ### Array Kya Hai?
 Array ek **fixed-size sequential collection** hai jisme same type ke elements store hote hain. Java mein arrays **0-indexed** hote hain (matlab pehla element index 0 pe hai).
 
+```mermaid
+flowchart LR
+    A["Index 0<br>10"] --- B["Index 1<br>20"] --- C["Index 2<br>30"] --- D["Index 3<br>40"] --- E["Index 4<br>50"]
+```
+
 ```java
 // Array declare karna aur initialize karna
 int[] arr = new int[5];          // size 5 ka empty array (sab 0 honge)
@@ -52,6 +57,13 @@ Do pointers (variables) use karo array mein — ek left se, ek right se. Dono mi
 - Array reverse karna hai
 - Duplicates remove karne hain sorted array se
 - Container with most water type problems
+
+```mermaid
+flowchart LR
+    A["[ 1 ]<br>⬆️ Left"] --- B["[ 3 ]"] --- C["[ 5 ]"] --- D["[ 7 ]"] --- E["[ 9 ]<br>⬆️ Right"]
+    style A fill:#d4edda,stroke:#28a745,stroke-width:2px
+    style E fill:#f8d7da,stroke:#dc3545,stroke-width:2px
+```
 
 ```java
 // ✅ Problem: Two Sum (Sorted Array) — do numbers dhundho jinke sum = target
@@ -114,6 +126,17 @@ Ek **window** (sub-array) ko array pe slide karte hain. Window ka size fixed ya 
 - Maximum/Minimum sum subarray of size K
 - Longest substring with K distinct characters
 - Subarray with given sum
+
+```mermaid
+flowchart LR
+    A["2"] --- B["1"] --- C["5"] --- D["1"] --- E["3"] --- F["2"]
+    subgraph Window ["Current Window (K=3)"]
+        B --- C --- D
+    end
+    style B fill:#fff3cd,stroke:#ffc107,stroke-width:2px
+    style C fill:#fff3cd,stroke:#ffc107,stroke-width:2px
+    style D fill:#fff3cd,stroke:#ffc107,stroke-width:2px
+```
 
 ```java
 // ✅ Problem: Maximum sum subarray of size K
@@ -186,6 +209,18 @@ public static int longestUniqueSubstring(String s) {
 ### Concept Kya Hai?
 **Maximum subarray sum** find karne ka sabse efficient algorithm. Idea simple hai — har position pe decide karo: "current element se naya subarray shuru karein ya purana continue karein?"
 
+```mermaid
+flowchart LR
+    A["-2"] --> B["1"] --> C["-3"] --> D["4"] --> E["-1"] --> F["2"] --> G["1"] --> H["-5"] --> I["4"]
+    subgraph MaxSubarray ["Max Subarray Sum = 6"]
+        D --> E --> F --> G
+    end
+    style D fill:#d1ecf1,stroke:#17a2b8,stroke-width:2px
+    style E fill:#d1ecf1,stroke:#17a2b8,stroke-width:2px
+    style F fill:#d1ecf1,stroke:#17a2b8,stroke-width:2px
+    style G fill:#d1ecf1,stroke:#17a2b8,stroke-width:2px
+```
+
 ```java
 // ✅ Problem: Maximum Subarray Sum (Kadane's Algorithm)
 // Approach: Har element pe decide karo — extend ya restart
@@ -227,6 +262,12 @@ public static int maxSubarraySum(int[] arr) {
 
 ### Concept Kya Hai?
 Ek nayi array banao jisme har index pe **sum of all elements from 0 to that index** store ho. Isse kisi bhi range ka sum **O(1)** mein nikaal sakte ho.
+
+```mermaid
+flowchart TD
+    A["Original Array:<br>[ 1, 2, 3, 4, 5 ]"] --> B["Prefix Sum Array:<br>[ 1, 3, 6, 10, 15 ]"]
+    B -.-> C["Range Sum (1 to 3) = Prefix[3] - Prefix[0]<br>10 - 1 = 9"]
+```
 
 ```java
 // ✅ Prefix Sum Array banana
@@ -296,6 +337,14 @@ public static int subarraySumK(int[] arr, int k) {
 
 ### Concept Kya Hai?
 **3 types ke elements** ko sort karna hai (jaise 0, 1, 2). Three pointers use karte hain — low, mid, high. Ye **single pass O(n)** mein kaam karta hai.
+
+```mermaid
+flowchart LR
+    A["[ 0, 0 ]<br>Sorted 0s"] --- B["[ 1 ]<br>Sorted 1s"] --- C["[ 2, 0 ]<br>Unsorted"] --- D["[ 2 ]<br>Sorted 2s"]
+    A -.->|Low Pointer| B
+    B -.->|Mid Pointer| C
+    C -.->|High Pointer| D
+```
 
 ```java
 // ✅ Problem: Sort Colors (0s, 1s, 2s sort karo)
