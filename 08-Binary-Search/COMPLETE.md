@@ -1,6 +1,13 @@
 # 🔍 Binary Search — Complete Learning Guide
 
 ## 1. Basic Binary Search
+
+Binary Search ek bohot hi fast searching algorithm hai (Divide & Conquer par based).
+Yeh **sirf sorted arrays** par kaam karta hai. Har step mein hum search space ko aadha kar dete hain.
+* **Kaise kaam karta hai?** Hum array ke middle element ko check karte hain. Agar target bada hai, toh right half mein dhundhte hain, warna left half mein.
+
+![Binary vs Linear Search Animation](https://blog.penjee.com/wp-content/uploads/2015/04/binary-and-linear-search-animations.gif)
+
 ```java
 // ✅ Sorted array mein element dhundho
 // Time: O(log n), Space: O(1)
@@ -25,6 +32,11 @@ public static int binarySearch(int[] arr, int target) {
 ```
 
 ## 2. Lower Bound / Upper Bound
+
+Kabhi kabhi humein sirf array mein search hi nahi karna hota, balki element ki exact position (insert karne ke liye) ya occurrences nikalni hoti hain.
+* **Lower Bound**: Woh pehla index jahan value `>= target` ho. (Target ke barabar ya usse bada pehla number).
+* **Upper Bound**: Woh pehla index jahan value `> target` ho. (Target se strictly bada pehla number).
+
 ```java
 // ✅ Lower Bound: pehla index jahan arr[i] >= target
 public static int lowerBound(int[] arr, int target) {
@@ -50,6 +62,10 @@ public static int upperBound(int[] arr, int target) {
 ```
 
 ## 3. Search in Rotated Sorted Array
+
+Jab ek sorted array ko kisi pivot point se rotate kiya jata hai, toh array 2 sorted halves mein bant jata hai. 
+Isme hamesha kam se kam ek half (left ya right) **strictly sorted** hota hai. Hum bas yeh check karte hain ki konsa half sorted hai, aur kya hamara target uss sorted range mein aata hai ya nahi.
+
 ```java
 // ✅ Rotated sorted array mein search
 // Time: O(log n)
@@ -83,6 +99,10 @@ public static int searchRotated(int[] nums, int target) {
 ```
 
 ## 4. Binary Search on Answer
+
+Yeh advance pattern tab use hota hai jab actual array mein kuch dhundhna nahi hota, balki ek **valid range (jaise 1 se maximum speed tak)** ke andar se minimum ya maximum possible answer nikalna hota hai.
+Hum answer ke possibilities par Binary Search lagate hain aur ek `canFinish()` function banate hain jo check karta hai ki `mid` value ek valid answer ban sakti hai ya nahi.
+
 ```java
 // ✅ Problem: Koko Eating Bananas — minimum speed K se sab kele kha lo H hours mein
 // Approach: Answer pe binary search karo (speed 1 se max tak)
@@ -114,6 +134,10 @@ private static boolean canFinish(int[] piles, int speed, int h) {
 ```
 
 ## 5. Find Peak Element
+
+Ek peak element woh hota hai jo apne dono padosiyo (neighbors) se bada hota hai. 
+Unsorted array mein bhi Binary Search lag sakta hai! Kaise? Agar `mid` wala element apne agle (right) element se chota hai, toh iska matlab slope upar jaa raha hai, yani ki peak right side mein hi kahin hoga.
+
 ```java
 // ✅ Array mein koi bhi peak element dhundho
 // Time: O(log n)
