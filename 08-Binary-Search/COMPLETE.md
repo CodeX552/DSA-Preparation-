@@ -8,6 +8,10 @@ Yeh **sirf sorted arrays** par kaam karta hai. Har step mein hum search space ko
 
 ![Binary vs Linear Search Animation](https://blog.penjee.com/wp-content/uploads/2015/04/binary-and-linear-search-animations.gif)
 
+> **Example:**
+> - **Input:** `arr = [2, 4, 6, 8, 10, 12]`, `target = 8`
+> - **Output:** `3` (Kyunki 8 index 3 par hai)
+
 ```java
 // ✅ Sorted array mein element dhundho
 // Time: O(log n), Space: O(1)
@@ -37,6 +41,10 @@ Kabhi kabhi humein sirf array mein search hi nahi karna hota, balki element ki e
 * **Lower Bound**: Woh pehla index jahan value `>= target` ho. (Target ke barabar ya usse bada pehla number).
 * **Upper Bound**: Woh pehla index jahan value `> target` ho. (Target se strictly bada pehla number).
 
+> **Example:**
+> - **Input:** `arr = [1, 2, 2, 2, 3, 4]`, `target = 2`
+> - **Output:** `Lower Bound = 1` (Pehli baar 2 yahan aaya hai), `Upper Bound = 4` (2 se bada pehla number 3 hai, jo index 4 par hai)
+
 ```java
 // ✅ Lower Bound: pehla index jahan arr[i] >= target
 public static int lowerBound(int[] arr, int target) {
@@ -65,6 +73,10 @@ public static int upperBound(int[] arr, int target) {
 
 Jab ek sorted array ko kisi pivot point se rotate kiya jata hai, toh array 2 sorted halves mein bant jata hai. 
 Isme hamesha kam se kam ek half (left ya right) **strictly sorted** hota hai. Hum bas yeh check karte hain ki konsa half sorted hai, aur kya hamara target uss sorted range mein aata hai ya nahi.
+
+> **Example:**
+> - **Input:** `arr = [4, 5, 6, 7, 0, 1, 2]`, `target = 0`
+> - **Output:** `4` (Array rotate hone ke baad bhi 0 ka correct index 4 hai)
 
 ```java
 // ✅ Rotated sorted array mein search
@@ -103,6 +115,10 @@ public static int searchRotated(int[] nums, int target) {
 Yeh advance pattern tab use hota hai jab actual array mein kuch dhundhna nahi hota, balki ek **valid range (jaise 1 se maximum speed tak)** ke andar se minimum ya maximum possible answer nikalna hota hai.
 Hum answer ke possibilities par Binary Search lagate hain aur ek `canFinish()` function banate hain jo check karta hai ki `mid` value ek valid answer ban sakti hai ya nahi.
 
+> **Example (Koko Eating Bananas):**
+> - **Input:** `piles = [3, 6, 7, 11]`, `h = 8`
+> - **Output:** `4` (Agar Koko 4 bananas/hour khayega, toh woh exactly 8 ghante mein sab kha lega. Minimum speed 4 hi hai!)
+
 ```java
 // ✅ Problem: Koko Eating Bananas — minimum speed K se sab kele kha lo H hours mein
 // Approach: Answer pe binary search karo (speed 1 se max tak)
@@ -137,6 +153,10 @@ private static boolean canFinish(int[] piles, int speed, int h) {
 
 Ek peak element woh hota hai jo apne dono padosiyo (neighbors) se bada hota hai. 
 Unsorted array mein bhi Binary Search lag sakta hai! Kaise? Agar `mid` wala element apne agle (right) element se chota hai, toh iska matlab slope upar jaa raha hai, yani ki peak right side mein hi kahin hoga.
+
+> **Example:**
+> - **Input:** `arr = [1, 2, 3, 1]`
+> - **Output:** `2` (Index 2 par value 3 hai, jo apne padosiyo '2' aur '1' dono se bada hai, isliye yeh ek peak hai!)
 
 ```java
 // ✅ Array mein koi bhi peak element dhundho
