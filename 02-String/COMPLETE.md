@@ -71,6 +71,23 @@ sb.toString();            // String mein convert
 ### Palindrome Kya Hai?
 Jo string ulta padho bhi same ho — jaise "madam", "racecar", "121".
 
+<details>
+<summary>🎥 <b>Visual Animation: Two Pointer Palindrome Check</b></summary>
+
+```text
+Checking "madam":
+
+[Step 1]           [Step 2]           [Step 3]
+m a d a m          m a d a m          m a d a m
+↑       ↑            ↑   ↑              ↑
+L       R            L   R             L,R
+'m' == 'm'         'a' == 'a'         'd' == 'd'
+Match! L++, R--    Match! L++, R--    L >= R, loop ends.
+
+Result: It's a Palindrome! ✅
+```
+</details>
+
 ```java
 // ✅ Problem: Check if String is Palindrome
 // Approach: Two Pointer — dono sides se compare karo
@@ -166,6 +183,29 @@ private static int expandAroundCenter(String s, int left, int right) {
 ### Anagram Kya Hai?
 Do strings jo **same characters** se bane hain sirf order alag hai — jaise "listen" aur "silent".
 
+<details>
+<summary>🎥 <b>Visual Animation: Frequency Array</b></summary>
+
+```text
+Checking "eat" and "tea":
+
+1. Process 'e' in both:
+   eat -> count['e']++  (count['e'] = 1)
+   tea -> count['t']--  (count['t'] = -1)
+
+2. Process 'a' in both:
+   eat -> count['a']++  (count['a'] = 1)
+   tea -> count['e']--  (count['e'] = 1 - 1 = 0)
+
+3. Process 't' in both:
+   eat -> count['t']++  (count['t'] = -1 + 1 = 0)
+   tea -> count['a']--  (count['a'] = 1 - 1 = 0)
+
+Final Array: All elements are 0.
+Result: They are Anagrams! ✅
+```
+</details>
+
 ```java
 // ✅ Problem: Check if two strings are anagrams
 // Approach: Character frequency count compare karo
@@ -219,6 +259,24 @@ public static List<List<String>> groupAnagrams(String[] strs) {
 ---
 
 ## 4. Sliding Window on Strings
+
+<details>
+<summary>🎥 <b>Visual Animation: Sliding Window Concept</b></summary>
+
+```text
+Finding Longest Substring Without Repeating Characters in "abcabcbb"
+[ ] = Current Window
+
+Step 1: [a] b c a b c b b       -> maxLen = 1, set = {a}
+Step 2: [a b] c a b c b b       -> maxLen = 2, set = {a,b}
+Step 3: [a b c] a b c b b       -> maxLen = 3, set = {a,b,c}
+Step 4: [a b c a] b c b b       -> Duplicate 'a'! Shrink left.
+          [b c a] b c b b       -> maxLen = 3, set = {b,c,a}
+Step 5:   [b c a b] c b b       -> Duplicate 'b'! Shrink left.
+            [c a b] c b b       -> maxLen = 3, set = {c,a,b}
+...
+```
+</details>
 
 ```java
 // ✅ Problem: Longest Substring Without Repeating Characters
