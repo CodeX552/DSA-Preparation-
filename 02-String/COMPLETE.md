@@ -74,6 +74,8 @@ Jo string ulta padho bhi same ho — jaise "madam", "racecar", "121".
 <details>
 <summary>🎥 <b>Visual Animation: Two Pointer Palindrome Check</b></summary>
 
+![Palindrome Animation](assets/palindrome.gif)
+
 ```text
 Checking "madam":
 
@@ -186,6 +188,8 @@ Do strings jo **same characters** se bane hain sirf order alag hai — jaise "li
 <details>
 <summary>🎥 <b>Visual Animation: Frequency Array</b></summary>
 
+![Anagram Animation](assets/anagram.gif)
+
 ```text
 Checking "eat" and "tea":
 
@@ -262,6 +266,8 @@ public static List<List<String>> groupAnagrams(String[] strs) {
 
 <details>
 <summary>🎥 <b>Visual Animation: Sliding Window Concept</b></summary>
+
+![Sliding Window Animation](assets/sliding_window.gif)
 
 ```text
 Finding Longest Substring Without Repeating Characters in "abcabcbb"
