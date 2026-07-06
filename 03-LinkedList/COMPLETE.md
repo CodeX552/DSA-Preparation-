@@ -111,6 +111,8 @@ public static int length(ListNode head) {
 ## 3. Reverse Linked List
 
 ### Iterative Approach (MUST KNOW!)
+> 🎥 **Visualization:** [Step-by-Step Reverse Linked List](Visualizations/reverse_linked_list_visual.md)
+
 ```java
 // ✅ Problem: Linked List ko reverse karo
 // Approach: 3 pointers — prev, current, next
@@ -195,6 +197,8 @@ public static ListNode reverseKGroup(ListNode head, int k) {
 ### Concept
 Do pointers rakh lo — **slow** ek step chalega, **fast** do step chalega. Ye technique cycle detection, middle element, aur nth node se end problems mein kaam aati hai.
 
+> 🎥 **Visualization:** [Step-by-Step Middle of Linked List](Visualizations/middle_linked_list_visual.md)
+
 ```java
 // ✅ Problem: Middle of Linked List
 // Approach: Slow 1 step, Fast 2 step — jab fast end pe, slow middle pe
@@ -221,6 +225,8 @@ public static ListNode findMiddle(ListNode head) {
 // slow = 4 (second middle) ✅
 ```
 
+> 🎥 **Visualization:** [Step-by-Step Detect Cycle](Visualizations/cycle_detection_visual.md)
+
 ```java
 // ✅ Problem: Detect Cycle in Linked List (Floyd's Cycle Detection)
 // Approach: Fast-Slow pointer — agar cycle hai toh dono milenge
@@ -242,6 +248,8 @@ public static boolean hasCycle(ListNode head) {
     return false;                    // fast null pe pahunch gaya — no cycle
 }
 ```
+
+> 🎥 **Visualization:** [Step-by-Step Find Cycle Start Node](Visualizations/cycle_start_visual.md)
 
 ```java
 // ✅ Problem: Find starting node of cycle
@@ -270,6 +278,8 @@ public static ListNode detectCycleStart(ListNode head) {
     return slow;                     // cycle ka starting node!
 }
 ```
+
+> 🎥 **Visualization:** [Step-by-Step Remove Nth Node From End](Visualizations/remove_nth_node_visual.md)
 
 ```java
 // ✅ Problem: Remove Nth Node From End of List
@@ -303,6 +313,8 @@ public static ListNode removeNthFromEnd(ListNode head, int n) {
 ---
 
 ## 5. Merge Operations
+
+> 🎥 **Visualization:** [Step-by-Step Merge Two Sorted Lists](Visualizations/merge_two_lists_visual.md)
 
 ```java
 // ✅ Problem: Merge Two Sorted Linked Lists
@@ -395,6 +407,8 @@ public static ListNode sortList(ListNode head) {
 ```
 
 ### Intersection of Two Linked Lists 🟢 Easy
+> 🎥 **Visualization:** [Step-by-Step Intersection of Two Lists](Visualizations/intersection_list_visual.md)
+
 ```java
 // ✅ Problem: Do linked lists ka intersection point dhundho
 // Approach: Dono pointers — jab ek end pe aaye toh doosre ka head pe bhejo
