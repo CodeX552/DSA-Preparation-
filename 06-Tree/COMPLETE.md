@@ -51,6 +51,16 @@ root.left.right = new TreeNode(5);
 ## 2. Tree Traversals
 
 ### DFS (Depth First Search) — 3 Types
+
+#### 1. Inorder Traversal
+![Inorder Traversal Animation](https://upload.wikimedia.org/wikipedia/commons/4/48/Inorder-traversal.gif)
+
+#### 2. Preorder Traversal
+![Preorder Traversal Animation](https://upload.wikimedia.org/wikipedia/commons/a/ac/Preorder-traversal.gif)
+
+#### 3. Postorder Traversal
+![Postorder Traversal Animation](https://upload.wikimedia.org/wikipedia/commons/2/28/Postorder-traversal.gif)
+
 ```java
 // ✅ Inorder: Left → Root → Right (BST mein sorted order milta hai!)
 public static void inorder(TreeNode root) {
@@ -104,6 +114,8 @@ public static List<Integer> inorderIterative(TreeNode root) {
 ```
 
 ### BFS / Level Order Traversal (Queue se)
+
+![Level Order Traversal Animation](https://upload.wikimedia.org/wikipedia/commons/4/46/Animated_BFS.gif)
 ```java
 // ✅ Level Order Traversal — Queue use karo
 // Time: O(n), Space: O(n)
@@ -149,6 +161,8 @@ public static List<List<Integer>> levelOrder(TreeNode root) {
 - **Left subtree** ke sab elements root se **chhote**
 - **Right subtree** ke sab elements root se **bade**
 - **Inorder traversal** = **sorted order**!
+
+![BST Insertion Animation](https://upload.wikimedia.org/wikipedia/commons/8/83/Binary-search-tree-insertion-animation.gif)
 
 ```java
 // ✅ Search in BST — O(log n) average
