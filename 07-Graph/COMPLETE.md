@@ -2,6 +2,8 @@
 
 ## 1. Graph Representation
 
+![Graph Representation](images/graph.png)
+
 ```java
 // ✅ Adjacency List (sabse common — interviews mein ye use karo)
 List<List<Integer>> graph = new ArrayList<>();
@@ -18,6 +20,10 @@ List<List<int[]>> weightedGraph = new ArrayList<>();
 ```
 
 ## 2. BFS (Breadth First Search)
+
+
+![BFS Animation](images/bfs.gif)
+
 
 ```java
 // ✅ BFS — Level by level explore karo (Queue use)
@@ -46,6 +52,10 @@ public static void bfs(List<List<Integer>> graph, int start, int n) {
 
 ## 3. DFS (Depth First Search)
 
+
+![DFS Animation](images/dfs.gif)
+
+
 ```java
 // ✅ DFS — Depth mein jao pehle (Stack/Recursion use)
 // Time: O(V + E), Space: O(V)
@@ -63,6 +73,29 @@ public static void dfs(List<List<Integer>> graph, int node, boolean[] visited) {
 ```
 
 ## 4. Number of Islands (Grid BFS/DFS)
+
+
+```mermaid
+graph TD
+    A1((1)) --- A2((1)) --- A3((0))
+    B1((1)) --- B2((0)) --- B3((0))
+    C1((0)) --- C2((0)) --- C3((1))
+    
+    A1 --- B1
+    A2 --- B2
+    A3 --- B3
+    B1 --- C1
+    B2 --- C2
+    B3 --- C3
+    
+    classDef land fill:#a5d6a7,stroke:#2e7d32,stroke-width:2px;
+    classDef water fill:#90caf9,stroke:#1565c0,stroke-width:2px;
+    
+    class A1,A2,B1 land;
+    class C3 land;
+    class A3,B2,B3,C1,C2 water;
+```
+
 
 ```java
 // ✅ Problem: Grid mein kitne islands hain (connected '1' groups)
@@ -96,6 +129,16 @@ private static void dfsGrid(char[][] grid, int i, int j, int m, int n) {
 
 ## 5. Cycle Detection
 
+```mermaid
+graph LR
+    A((0)) --- B((1))
+    B --- C((2))
+    C --- A
+    
+    classDef cycle fill:#ffcdd2,stroke:#c62828,stroke-width:2px;
+    class A,B,C cycle;
+```
+
 ```java
 // ✅ Undirected Graph mein cycle detect karo
 public static boolean hasCycleUndirected(List<List<Integer>> graph, int n) {
@@ -122,6 +165,21 @@ private static boolean dfsCycle(List<List<Integer>> graph, int node, int parent,
 ```
 
 ## 6. Topological Sort (DAG)
+
+```mermaid
+graph LR
+    0((0)) --> 2((2))
+    1((1)) --> 2
+    2 --> 3((3))
+    
+    subgraph Valid_Topological_Order
+        direction LR
+        step1[0] --> step2[1] --> step3[2] --> step4[3]
+    end
+    
+    classDef dagNode fill:#e1bee7,stroke:#6a1b9a,stroke-width:2px;
+    class 0,1,2,3 dagNode;
+```
 
 ```java
 // ✅ Topological Sort — BFS (Kahn's Algorithm)
@@ -153,6 +211,10 @@ public static List<Integer> topologicalSort(List<List<Integer>> graph, int n) {
 ```
 
 ## 7. Dijkstra's Algorithm (Shortest Path)
+
+
+![Dijkstra's Algorithm Animation](images/dijkstra.gif)
+
 
 ```java
 // ✅ Dijkstra — Weighted graph mein shortest path
