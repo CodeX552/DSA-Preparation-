@@ -3,6 +3,9 @@
 ## 1. Recursion Basics
 
 ### Recursion Kya Hai?
+
+![Recursion Animation - Tower of Hanoi](https://upload.wikimedia.org/wikipedia/commons/8/81/Tower_of_Hanoi_4.gif)
+
 Function jo **khud ko call** kare chhote version ke liye. Har recursion mein do cheezein hain:
 - **Base Case**: Ruk jao (nahi toh infinite loop)
 - **Recursive Case**: Chhota problem bana ke call karo
@@ -86,6 +89,8 @@ private static void generatePerms(int[] nums, boolean[] used, List<Integer> curr
 ```
 
 ## 4. N-Queens
+
+![N-Queens Backtracking Animation](https://upload.wikimedia.org/wikipedia/commons/1/1f/Eight-queens-animation.gif)
 
 ```java
 // ✅ Problem: N×N board pe N queens place karo, koi attack na kare
