@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="260" viewBox="0 0 720 260" role="img" aria-labelledby="title desc">
+  <title id="title">LCS DP Matrix Animation</title>
+  <desc id="desc">A scan highlight moves over a DP table for LCS.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f9f7ff; }
+      .cell { fill: #ede9fe; stroke: #8b5cf6; stroke-width: 1; }
+      .txt { font: 15px 'Segoe UI', sans-serif; fill: #312e81; }
+      .small { font: 12px 'Consolas', monospace; fill: #4338ca; }
+      .scan { fill: #a78bfa; opacity: .35; animation: scan 4s infinite; }
+      @keyframes scan {
+        0% { transform: translate(0px, 0px); }
+        25% { transform: translate(200px, 0px); }
+        50% { transform: translate(200px, 120px); }
+        75% { transform: translate(0px, 120px); }
+        100% { transform: translate(0px, 0px); }
+      }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="720" height="260"/>
+  <text class="txt" x="20" y="30">LCS: match => 1 + diagonal, else max(top, left)</text>
+
+  <g transform="translate(170,70)">
+    <rect class="cell" x="0" y="0" width="60" height="40"/>
+    <rect class="cell" x="60" y="0" width="60" height="40"/>
+    <rect class="cell" x="120" y="0" width="60" height="40"/>
+    <rect class="cell" x="180" y="0" width="60" height="40"/>
+    <rect class="cell" x="0" y="40" width="60" height="40"/>
+    <rect class="cell" x="60" y="40" width="60" height="40"/>
+    <rect class="cell" x="120" y="40" width="60" height="40"/>
+    <rect class="cell" x="180" y="40" width="60" height="40"/>
+    <rect class="cell" x="0" y="80" width="60" height="40"/>
+    <rect class="cell" x="60" y="80" width="60" height="40"/>
+    <rect class="cell" x="120" y="80" width="60" height="40"/>
+    <rect class="cell" x="180" y="80" width="60" height="40"/>
+    <rect class="scan" x="0" y="0" width="60" height="40"/>
+  </g>
+
+  <text class="small" x="170" y="210">Example strings: A B C D and A E C F</text>
+</svg>

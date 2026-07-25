@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="220" viewBox="0 0 720 220" role="img" aria-labelledby="title desc">
+  <title id="title">House Robber DP Animation</title>
+  <desc id="desc">Alternating houses are selected to maximize loot.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fffaf2; }
+      .house { fill: #d1d5db; stroke: #6b7280; stroke-width: 2; }
+      .roof { fill: #9ca3af; }
+      .txt { font: 15px 'Segoe UI', sans-serif; fill: #111827; }
+      .val { font: 13px 'Consolas', monospace; fill: #111827; }
+      .pick { animation: pick 2.8s infinite; }
+      #h1 { animation-delay: 0s; }
+      #h2 { animation-delay: .7s; }
+      #h3 { animation-delay: 1.4s; }
+      #h4 { animation-delay: 2.1s; }
+      @keyframes pick {
+        0%, 18% { fill: #f59e0b; }
+        30%, 100% { fill: #d1d5db; }
+      }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="720" height="220"/>
+  <text class="txt" x="20" y="30">House Robber: curr = max(prev1, prev2 + nums[i])</text>
+
+  <polygon class="roof" points="80,95 120,65 160,95"/>
+  <rect class="house pick" id="h1" x="85" y="95" width="70" height="60"/>
+
+  <polygon class="roof" points="220,95 260,65 300,95"/>
+  <rect class="house pick" id="h2" x="225" y="95" width="70" height="60"/>
+
+  <polygon class="roof" points="360,95 400,65 440,95"/>
+  <rect class="house pick" id="h3" x="365" y="95" width="70" height="60"/>
+
+  <polygon class="roof" points="500,95 540,65 580,95"/>
+  <rect class="house pick" id="h4" x="505" y="95" width="70" height="60"/>
+
+  <text class="val" x="84" y="178">2</text>
+  <text class="val" x="224" y="178">7</text>
+  <text class="val" x="364" y="178">9</text>
+  <text class="val" x="504" y="178">3</text>
+</svg>

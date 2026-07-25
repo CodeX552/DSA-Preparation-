@@ -47,6 +47,8 @@ public static int fibOptimal(int n) {
 ## 2. 1D DP Problems
 
 ### Climbing Stairs
+![Climbing Stairs DP animation](assets/climbing-stairs.svg)
+
 ```java
 // ✅ n stairs, 1 ya 2 step at a time — kitne ways?
 // Same as Fibonacci!
@@ -62,6 +64,8 @@ public static int climbStairs(int n) {
 ```
 
 ### House Robber
+![House Robber DP animation](assets/house-robber.svg)
+
 ```java
 // ✅ Adjacent houses rob nahi kar sakte, maximum money?
 // dp[i] = max(rob this + dp[i-2], skip this + dp[i-1])
@@ -81,6 +85,8 @@ public static int rob(int[] nums) {
 ## 3. 2D DP Problems
 
 ### Longest Common Subsequence (LCS)
+![LCS DP table animation](assets/lcs.svg)
+
 ```java
 // ✅ Do strings ka longest common subsequence
 // Time: O(m * n), Space: O(m * n)
@@ -104,6 +110,8 @@ public static int longestCommonSubsequence(String text1, String text2) {
 ```
 
 ### Edit Distance
+![Edit Distance DP animation](assets/edit-distance.svg)
+
 ```java
 // ✅ Minimum operations (insert/delete/replace) to convert word1 to word2
 // Time: O(m * n)
@@ -159,6 +167,8 @@ public static int knapsack(int W, int[] weight, int[] value, int n) {
 ```
 
 ### Coin Change
+![Coin Change DP animation](assets/coin-change.svg)
+
 ```java
 // ✅ Minimum coins for amount (unlimited supply)
 // Time: O(amount * coins)
@@ -181,6 +191,8 @@ public static int coinChange(int[] coins, int amount) {
 ```
 
 ## 5. Longest Increasing Subsequence (LIS)
+
+![LIS DP animation](assets/lis.svg)
 
 ```java
 // ✅ LIS — O(n²) approach

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="240" viewBox="0 0 720 240" role="img" aria-labelledby="title desc">
+  <title id="title">LIS Animation</title>
+  <desc id="desc">Bars pulse to indicate increasing subsequence choices.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f0f9ff; }
+      .txt { font: 15px 'Segoe UI', sans-serif; fill: #0c4a6e; }
+      .bar { fill: #7dd3fc; }
+      .bar2 { fill: #38bdf8; }
+      .mark { animation: mark 3s infinite; }
+      #b1 { animation-delay: 0s; }
+      #b2 { animation-delay: .5s; }
+      #b3 { animation-delay: 1s; }
+      #b4 { animation-delay: 1.5s; }
+      #b5 { animation-delay: 2s; }
+      @keyframes mark {
+        0%, 18% { fill: #0284c7; }
+        35%, 100% { fill: #7dd3fc; }
+      }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="720" height="240"/>
+  <text class="txt" x="20" y="30">LIS: if nums[j] &lt; nums[i], dp[i] = max(dp[i], dp[j] + 1)</text>
+
+  <g transform="translate(90,60)">
+    <rect class="bar mark" id="b1" x="0" y="80" width="70" height="70"/>
+    <rect class="bar mark" id="b2" x="90" y="40" width="70" height="110"/>
+    <rect class="bar mark" id="b3" x="180" y="100" width="70" height="50"/>
+    <rect class="bar mark" id="b4" x="270" y="20" width="70" height="130"/>
+    <rect class="bar mark" id="b5" x="360" y="60" width="70" height="90"/>
+  </g>
+</svg>

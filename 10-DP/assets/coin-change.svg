@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="230" viewBox="0 0 720 230" role="img" aria-labelledby="title desc">
+  <title id="title">Coin Change DP Animation</title>
+  <desc id="desc">DP amounts update from 0 toward target amount.</desc>
+  <defs>
+    <style>
+      .bg { fill: #f4fbf5; }
+      .slot { fill: #d1fae5; stroke: #10b981; stroke-width: 1.5; rx: 6; }
+      .txt { font: 15px 'Segoe UI', sans-serif; fill: #064e3b; }
+      .val { font: 12px 'Consolas', monospace; fill: #065f46; }
+      .coin { fill: #fbbf24; stroke: #b45309; stroke-width: 2; }
+      .move { animation: move 3.2s infinite linear; }
+      @keyframes move {
+        0% { transform: translate(0px, 0px); }
+        100% { transform: translate(460px, 0px); }
+      }
+    </style>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="720" height="230"/>
+  <text class="txt" x="22" y="30">Coin Change: dp[i] = min(dp[i], 1 + dp[i - coin])</text>
+
+  <g transform="translate(40,90)">
+    <rect class="slot" x="0" y="0" width="60" height="45"/>
+    <rect class="slot" x="70" y="0" width="60" height="45"/>
+    <rect class="slot" x="140" y="0" width="60" height="45"/>
+    <rect class="slot" x="210" y="0" width="60" height="45"/>
+    <rect class="slot" x="280" y="0" width="60" height="45"/>
+    <rect class="slot" x="350" y="0" width="60" height="45"/>
+    <rect class="slot" x="420" y="0" width="60" height="45"/>
+
+    <text class="val" x="20" y="27">0</text>
+    <text class="val" x="90" y="27">1</text>
+    <text class="val" x="160" y="27">2</text>
+    <text class="val" x="230" y="27">3</text>
+    <text class="val" x="300" y="27">4</text>
+    <text class="val" x="370" y="27">5</text>
+    <text class="val" x="440" y="27">6</text>
+  </g>
+
+  <circle class="coin move" cx="70" cy="70" r="16"/>
+  <text class="val" x="64" y="74">1</text>
+</svg>

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="260" viewBox="0 0 720 260" role="img" aria-labelledby="title desc">
+  <title id="title">Edit Distance Animation</title>
+  <desc id="desc">Insert, delete, and replace operations animate around a center word.</desc>
+  <defs>
+    <style>
+      .bg { fill: #fff7ed; }
+      .txt { font: 15px 'Segoe UI', sans-serif; fill: #9a3412; }
+      .word { font: 26px 'Consolas', monospace; fill: #7c2d12; }
+      .op { font: 14px 'Segoe UI', sans-serif; fill: #ea580c; opacity: 0; }
+      .fade { animation: fade 3.6s infinite; }
+      #op1 { animation-delay: 0s; }
+      #op2 { animation-delay: 1.2s; }
+      #op3 { animation-delay: 2.4s; }
+      @keyframes fade {
+        0%, 20% { opacity: 1; }
+        35%, 100% { opacity: 0; }
+      }
+      .arr { stroke: #f97316; stroke-width: 2.5; marker-end: url(#m); fill: none; }
+    </style>
+    <marker id="m" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#f97316"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="720" height="260"/>
+  <text class="txt" x="20" y="30">Edit Distance: min(insert, delete, replace) + 1</text>
+
+  <text class="word" x="300" y="145">horse</text>
+  <text class="word" x="470" y="145">ros</text>
+
+  <path class="arr" d="M360 130 C390 90, 430 90, 455 125"/>
+  <text class="op fade" id="op1" x="370" y="85">replace</text>
+
+  <path class="arr" d="M330 150 C360 190, 410 190, 450 150"/>
+  <text class="op fade" id="op2" x="375" y="205">delete</text>
+
+  <path class="arr" d="M280 115 C250 85, 220 85, 190 115"/>
+  <text class="op fade" id="op3" x="205" y="82">insert</text>
+</svg>
